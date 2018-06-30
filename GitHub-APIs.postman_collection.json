@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "0352bf69-1bc6-4060-a367-d696d4155dc3",
+		"name": "GitHub-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list-all-branches",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e503e95c-aab8-4052-8bc0-468a0cc3564b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://api.github.com/repos/{{user}}/{{repo}}/branches",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"repos",
+						"{{user}}",
+						"{{repo}}",
+						"branches"
+					]
+				},
+				"description": "https://api.github.com/repos/navadeep0927/california1/branches"
+			},
+			"response": []
+		},
+		{
+			"name": "check-protection",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8435a4a1-da3f-4264-9bfd-ebb8e38037a9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{id}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://api.github.com/repos/{{user}}/{{repo}}/branches/{{branch}}/protection",
+					"protocol": "https",
+					"host": [
+						"api",
+						"github",
+						"com"
+					],
+					"path": [
+						"repos",
+						"{{user}}",
+						"{{repo}}",
+						"branches",
+						"{{branch}}",
+						"protection"
+					]
+				},
+				"description": "https://api.github.com/repos/navadeep0927/california1/branches/woohoo/protection"
+			},
+			"response": []
+		}
+	]
+}
